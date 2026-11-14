@@ -1,0 +1,14 @@
+-- Sales Person
+-- https://leetcode.com/problems/sales-person/description/
+
+# Write your MySQL query statement below
+SELECT name
+FROM SalesPerson
+WHERE name NOT IN (
+    SELECT sp.name
+    FROM Orders AS o
+        LEFT JOIN SalesPerson AS sp ON o.sales_id = sp.sales_id
+        LEFT JOIN Company AS c ON o.com_id = c.com_id
+    WHERE c.name = 'RED'
+)
+;
