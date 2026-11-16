@@ -1,0 +1,15 @@
+-- Find Total Time Spent by Each Employee
+-- https://leetcode.com/problems/find-total-time-spent-by-each-employee/description/
+
+# Write your MySQL query statement below
+SELECT event_day AS day
+     , emp_id
+     , SUM(in_out_time) AS total_time
+FROM (
+    SELECT emp_id
+        , event_day
+        , out_time - in_time AS in_out_time
+    FROM Employees
+) AS t
+GROUP BY event_day, emp_id
+;
