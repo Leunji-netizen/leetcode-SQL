@@ -7,5 +7,5 @@ SELECT u.name
 FROM Transactions AS t
     INNER JOIN Users AS u ON t.account = u.account
 GROUP BY t.account, u.name
-HAVING SUM(t.amount) >= 10000
+HAVING SUM(t.amount) > 10000
 ;
